@@ -26,8 +26,8 @@ class ListActivity : AppCompatActivity() {
         db.collection("products")
             .get()
             .addOnSuccessListener { result ->
-                for (doc in result) {
-                    productListTextView.text = productListTextView.text.toString() + "${doc.data["name"]} - R$ ${doc.data["price"]} - ${doc.data["amount"]} itens \n"
+                for ((index, doc) in result.withIndex()) {
+                    productListTextView.text = productListTextView.text.toString() + "${index + 1} - ${doc.data["name"]} - R$ ${doc.data["price"]} - ${doc.data["amount"]} itens \n"
 
                 }
             }
